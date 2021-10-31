@@ -68,6 +68,7 @@ public class ConfigHandler {
     public static ForgeConfigSpec.BooleanValue enableReach;
 
     public static ForgeConfigSpec.BooleanValue enableVillagerTradeTables;
+    public static ForgeConfigSpec.BooleanValue enableWandererTradeTables;
 
     static {
         // misc config
@@ -118,6 +119,10 @@ public class ConfigHandler {
         enableVillagerTradeTables = builder
                 .comment("Populates villager trader loot tables. Disabling prevents items from being provided to villagers with professions.")
                 .define("villager_trade_tables", true);
+
+        enableWandererTradeTables = builder
+                .comment("Populates wanderer trader loot tables. Disabling prevents items from being provided to wandering traders.")
+                .define("wanderer_trade_tables", true);
 
         builder.pop();
 

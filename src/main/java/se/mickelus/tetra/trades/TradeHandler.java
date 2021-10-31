@@ -16,14 +16,25 @@ import java.util.List;
 public class TradeHandler {
     @SubscribeEvent
     public void setupWandererTrades(WandererTradesEvent event) {
-        List<VillagerTrades.ITrade> generic = event.getGenericTrades();
-        List<VillagerTrades.ITrade> rare = event.getRareTrades();
 
+        if(ConfigHandler.enableWandererTradeTables.get()) {
+            PopulateGenericWandererTrades(event);
+            PopulateRareWandererTrades(event);
+        }
+    }
+
+    private void PopulateGenericWandererTrades(WandererTradesEvent event) {
+
+        List<VillagerTrades.ITrade> generic = event.getGenericTrades();
         generic.add(new ItemsForScrapTrade(InsulatedPlateItem.instance, 1, 24, 1));
         generic.add(new ItemsForEmeraldsAndScrapTrade(LubricantDispenser.instance, 1, 8, 16, 1));
         generic.add(new ItemsForEmeraldsAndScrapTrade(ItemQuickLatch.instance, 1, 5, 16, 1));
         generic.add(new ItemsForScrapTrade(ItemBolt.instance, 1, 32, 2));
+    }
 
+    private void PopulateRareWandererTrades(WandererTradesEvent event) {
+
+        List<VillagerTrades.ITrade> rare = event.getRareTrades();
         rare.add(new ItemsForEmeraldsAndScrapTrade(StonecutterItem.instance, 1, 32, 16, 1));
         rare.add(new ItemsForEmeraldsAndScrapTrade(EarthpiercerItem.instance, 1, 24, 16, 1));
         rare.add(new ItemsForEmeraldsAndScrapTrade(CombustionChamberItem.instance, 1, 25, 16, 1));
