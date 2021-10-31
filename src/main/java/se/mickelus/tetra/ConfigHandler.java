@@ -117,7 +117,7 @@ public class ConfigHandler {
 
         enableVillagerTrades = builder
                 .comment("Populates villager trader loot tables. Disabling prevents items from being provided to villagers with professions.")
-                .define("enable_villager_trades", true);
+                .define("villager_trades", true);
 
         builder.pop();
 
