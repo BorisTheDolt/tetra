@@ -67,7 +67,7 @@ public class ConfigHandler {
     public static ForgeConfigSpec.BooleanValue enableLookTrigger;
     public static ForgeConfigSpec.BooleanValue enableReach;
 
-    public static ForgeConfigSpec.BooleanValue enableVillagerTrades;
+    public static ForgeConfigSpec.BooleanValue enableVillagerTradeTables;
 
     static {
         // misc config
@@ -115,9 +115,9 @@ public class ConfigHandler {
                 .worldRestart()
                 .define("entity_reach", true);
 
-        enableVillagerTrades = builder
+        enableVillagerTradeTables = builder
                 .comment("Populates villager trader loot tables. Disabling prevents items from being provided to villagers with professions.")
-                .define("enable_villager_trades", true);
+                .define("villager_trade_tables", true);
 
         builder.pop();
 

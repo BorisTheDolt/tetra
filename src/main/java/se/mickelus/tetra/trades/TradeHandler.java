@@ -32,7 +32,7 @@ public class TradeHandler {
 
     @SubscribeEvent
     public void setupVillagerTrades(VillagerTradesEvent event) {
-        if(ConfigHandler.enableVillagerTrades.get()) {
+        if(ConfigHandler.enableVillagerTradeTables.get()) {
             VillagerProfession profession = event.getType();
 
             PopulateToolSmithTrades(event, profession);
