@@ -6,6 +6,7 @@ import net.minecraft.entity.merchant.villager.VillagerTrades;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.event.village.WandererTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import se.mickelus.tetra.ConfigHandler;
 import se.mickelus.tetra.blocks.forged.chthonic.ChthonicExtractorBlock;
 import se.mickelus.tetra.blocks.scroll.ScrollItem;
 import se.mickelus.tetra.items.forged.*;
@@ -31,7 +32,22 @@ public class TradeHandler {
 
     @SubscribeEvent
     public void setupVillagerTrades(VillagerTradesEvent event) {
-        VillagerProfession profession = event.getType();
+        if(ConfigHandler.enableVillagerTrades.get()) {
+            VillagerProfession profession = event.getType();
+
+            PopulateToolSmithTrades(event, profession);
+            PopulateWeaponSmithTrades(event, profession);
+            PopulateArmorerTrades(event, profession);
+            PopulateFletcherTrades(event, profession);
+            PopulateLeatherWorkerTrades(event, profession);
+            PopulateMasonTrades(event, profession);
+            PopulateLibrarianTrades(event, profession);
+            PopulateShepherdTrades(event, profession);
+            PopulateButcherTrades(event, profession);
+        }
+    }
+
+    private void PopulateToolSmithTrades(VillagerTradesEvent event, VillagerProfession profession) {
 
         if (VillagerProfession.TOOLSMITH.equals(profession)) {
             event.getTrades().get(3).addAll(ImmutableList.of(
@@ -45,6 +61,9 @@ public class TradeHandler {
                     new ItemsForEmeraldsTrade(ScrollItem.metalExpertise, 8, 1, 1, 20)
             ));
         }
+    }
+
+    private void PopulateWeaponSmithTrades(VillagerTradesEvent event, VillagerProfession profession) {
 
         if (VillagerProfession.WEAPONSMITH.equals(profession)) {
             event.getTrades().get(3).addAll(ImmutableList.of(
@@ -58,6 +77,9 @@ public class TradeHandler {
                     new ItemsForEmeraldsTrade(ScrollItem.metalExpertise, 8, 1, 1, 20)
             ));
         }
+    }
+
+    private void PopulateArmorerTrades(VillagerTradesEvent event, VillagerProfession profession) {
 
         if (VillagerProfession.ARMORER.equals(profession)) {
             event.getTrades().get(3).addAll(ImmutableList.of(
@@ -71,6 +93,9 @@ public class TradeHandler {
                     new ItemsForEmeraldsTrade(ScrollItem.metalExpertise, 8, 1, 1, 20)
             ));
         }
+    }
+
+    private void PopulateFletcherTrades(VillagerTradesEvent event, VillagerProfession profession) {
 
         if (VillagerProfession.FLETCHER.equals(profession)) {
             event.getTrades().get(2).addAll(ImmutableList.of(
@@ -88,6 +113,9 @@ public class TradeHandler {
                     new ItemsForEmeraldsTrade(ScrollItem.fibreExpertise, 8, 1, 1, 20)
             ));
         }
+    }
+
+    private void PopulateLeatherWorkerTrades(VillagerTradesEvent event, VillagerProfession profession) {
 
         if (VillagerProfession.LEATHERWORKER.equals(profession)) {
             event.getTrades().get(2).addAll(ImmutableList.of(
@@ -105,6 +133,9 @@ public class TradeHandler {
                     new ItemsForEmeraldsTrade(ScrollItem.skinExpertise, 8, 1, 1, 20)
             ));
         }
+    }
+
+    private void PopulateMasonTrades(VillagerTradesEvent event, VillagerProfession profession) {
 
         if (VillagerProfession.MASON.equals(profession)) {
             event.getTrades().get(2).addAll(ImmutableList.of(
@@ -122,6 +153,9 @@ public class TradeHandler {
                     new ItemsForEmeraldsTrade(ScrollItem.gemExpertise, 8, 1, 1, 20)
             ));
         }
+    }
+
+    private void PopulateLibrarianTrades(VillagerTradesEvent event, VillagerProfession profession) {
 
         if (VillagerProfession.LIBRARIAN.equals(profession)) {
             event.getTrades().get(3).addAll(ImmutableList.of(
@@ -135,6 +169,9 @@ public class TradeHandler {
                     new ItemsForEmeraldsTrade(ScrollItem.howlingBlade, 16, 1, 1, 20)
             ));
         }
+    }
+
+    private void PopulateShepherdTrades(VillagerTradesEvent event, VillagerProfession profession) {
 
         if (VillagerProfession.SHEPHERD.equals(profession)) {
             event.getTrades().get(3).addAll(ImmutableList.of(
@@ -144,6 +181,9 @@ public class TradeHandler {
                     new ItemsForEmeraldsTrade(ScrollItem.fabricExpertise, 16, 1, 1, 20)
             ));
         }
+    }
+
+    private void PopulateButcherTrades(VillagerTradesEvent event, VillagerProfession profession) {
 
         if (VillagerProfession.BUTCHER.equals(profession)) {
             event.getTrades().get(3).addAll(ImmutableList.of(
